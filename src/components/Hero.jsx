@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import  { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { TiLocationArrow } from "react-icons/ti";
@@ -32,7 +33,27 @@ function Hero() {
     setCurrentIndex(upcomingVideoIndex);
   };
 
-  const getVideoSrc  = (index) => `videos/hero-${index}.mp4`;
+//check the user if he is using mobile or desktop
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  // Function to update the state based on window size
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768); // 768px is a common breakpoint for mobile devices
+  };
+
+  // Set the initial value
+  handleResize();
+
+  // Add event listener for window resize
+  window.addEventListener('resize', handleResize);
+
+  //cleanup the event listener on component unmount
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+  
+  const getVideoSrc  = (index) => isMobile ?  `videos/hero-${index}.mp4` : `videos/720-hero-${index}.mp4`;
 
 useGSAP(()=>{
 if(hasClicked){
