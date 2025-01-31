@@ -53,7 +53,7 @@ useEffect(() => {
 }, []);
 
   
-  const getVideoSrc  = (index) => isMobile ?  `videos/hero-${index}.mp4` : `videos/720-hero-${index}.mp4`;
+  const getVideoSrc  = (index) => isMobile ?  `videos/hero-3.mp4` : `videos/720-hero-${index}.mp4`;
 
 useGSAP(()=>{
 if(hasClicked){
